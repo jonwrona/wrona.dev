@@ -1,0 +1,64 @@
+---
+// CRT screen component with optional fisheye distortion effect
+interface Props {
+  enabled?: boolean;
+  scale?: number;
+  slope?: number;
+  intercept?: number;
+}
+
+const {
+  enabled = true,
+  scale = 200,
+  slope = 0.8,
+  intercept = 0.1,
+} = Astro.props;
+---
+
+{enabled && (
+  <svg style="position: fixed; top: 0; left: 0; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <filter id="fisheye-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+        <feImage xlink:href="/fisheye.png" result="displacementRaw" preserveAspectRatio="xMidYMid slice" />
+        <!-- Adjust displacement map to be centered at 0.5 (neutral) -->
+        <feComponentTransfer in="displacementRaw" result="displacement">
+          <feFuncR type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
+          <feFuncG type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
+        </feComponentTransfer>
+        <feDisplacementMap in="SourceGraphic" in2="displacement" scale={scale.toString()} xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+)}
+
+<div class="crt-screen" class:list={{ 'crt-filter-enabled': enabled }}>
+  <div class="crt-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .crt-screen {
+    position: relative;
+    box-sizing: border-box;
+    width: calc(100vw - 1.5rem);
+    height: calc(100vh - 1.5rem);
+    overflow: hidden;
+  }
+
+  .crt-content {
+    background: green;
+    color: white;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+  }
+
+  .crt-filter-enabled {
+    filter: url(#fisheye-filter);
+  }
+</style>
