@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.5",
-    "@astrojs/node": "^9.5.2",
     "@fontsource/jersey-10": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.10",
     "@fontsource/space-mono": "^5.2.9",
@@ -19,6 +18,7 @@
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.15",
+    "nanostores": "^1.1.0",
     "ogl": "^1.0.11",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"

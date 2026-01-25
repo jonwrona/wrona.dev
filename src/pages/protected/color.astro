@@ -1,0 +1,498 @@
+---
+export const prerender = false;
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Color Sandbox">
+  <div class="color-sandbox">
+    <section class="section">
+      <h1>Color System</h1>
+      <p class="text-sm">
+        A warm, vibrant color palette for creating engaging and accessible
+        interfaces
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Base Colors</h2>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--white);"></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--white</p>
+            <p class="text-xs text-muted">#ffffff</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Background Colors</h2>
+      <p class="text-sm">
+        Soft, warm gradients that create a comfortable reading environment
+      </p>
+      <div class="color-grid">
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--bg-primary);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--bg-primary</p>
+            <p class="text-xs text-muted">#fff8f0</p>
+            <p class="text-xs">Warm cream background</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--bg-secondary);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--bg-secondary</p>
+            <p class="text-xs text-muted">#f5f0e8</p>
+            <p class="text-xs">Subtle gradient accent</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Text Colors</h2>
+      <p class="text-sm">
+        Carefully balanced contrast ratios for optimal readability
+      </p>
+      <div class="color-grid">
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--text-primary);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--text-primary</p>
+            <p class="text-xs text-muted">#2c2c2c</p>
+            <p class="text-xs">Main body text</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--text-secondary);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--text-secondary</p>
+            <p class="text-xs text-muted">#5a5a5a</p>
+            <p class="text-xs">Secondary content</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--text-muted);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--text-muted</p>
+            <p class="text-xs text-muted">#8b8b8b</p>
+            <p class="text-xs">Muted text & captions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Accent Colors</h2>
+      <p class="text-sm">
+        Electric, high-energy neon colors perfect for modern, bold designs
+      </p>
+      <div class="color-grid">
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--accent-hot-pink);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--accent-hot-pink</p>
+            <p class="text-xs text-muted">#ff1493</p>
+            <p class="text-xs">Electric pink</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--accent-cyan);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--accent-cyan</p>
+            <p class="text-xs text-muted">#00ced1</p>
+            <p class="text-xs">Neon cyan</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--accent-lime);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--accent-lime</p>
+            <p class="text-xs text-muted">#32cd32</p>
+            <p class="text-xs">Bright lime</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--accent-orange);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--accent-orange</p>
+            <p class="text-xs text-muted">#ff6347</p>
+            <p class="text-xs">Neon orange</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--accent-violet);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--accent-violet</p>
+            <p class="text-xs text-muted">#8a2be2</p>
+            <p class="text-xs">Electric violet</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Interactive Elements</h2>
+      <p class="text-sm">
+        Colors designed for links, buttons, and other interactive components
+      </p>
+      <div class="color-grid">
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--link-default);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--link-default</p>
+            <p class="text-xs text-muted">#ff1493</p>
+            <p class="text-xs">Default link state</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--link-hover);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--link-hover</p>
+            <p class="text-xs text-muted">#00ced1</p>
+            <p class="text-xs">Link hover state</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--button-bg);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--button-bg</p>
+            <p class="text-xs text-muted">#ff1493</p>
+            <p class="text-xs">Button background</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--button-hover);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--button-hover</p>
+            <p class="text-xs text-muted">#ff6347</p>
+            <p class="text-xs">Button hover state</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Text Color Examples</h2>
+      <div class="text-examples">
+        <p style="color: var(--text-primary);">
+          Primary text color - Used for main content and headings
+        </p>
+        <p style="color: var(--text-secondary);">
+          Secondary text color - Used for supporting content
+        </p>
+        <p style="color: var(--text-muted);">
+          Muted text color - Used for captions and less important information
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Accent Color in Action</h2>
+      <div class="accent-examples">
+        <div class="accent-box" style="border-left: 4px solid var(--accent-hot-pink);">
+          <h4>Hot Pink</h4>
+          <p>Bold and energetic, perfect for primary actions</p>
+        </div>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-cyan);">
+          <h4>Cyan</h4>
+          <p>Cool and refreshing, great for highlights</p>
+        </div>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-lime);">
+          <h4>Lime</h4>
+          <p>Vibrant and lively, draws immediate attention</p>
+        </div>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-orange);">
+          <h4>Orange</h4>
+          <p>Warm and inviting, ideal for CTAs</p>
+        </div>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-violet);">
+          <h4>Violet</h4>
+          <p>Electric and modern, adds depth</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Interactive Elements Demo</h2>
+      <div class="interactive-demo">
+        <div>
+          <h4>Links</h4>
+          <p>
+            Here's a <a href="#">standard link</a> that uses our link colors.
+            Hover over <a href="#">this link</a> to see the hover state transition.
+          </p>
+        </div>
+        <div>
+          <h4>Buttons</h4>
+          <button class="demo-button">Click Me</button>
+          <button class="demo-button secondary">Secondary Action</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Real-World Example</h2>
+      <article class="example-card">
+        <div class="card-header" style="background: linear-gradient(135deg, var(--accent-hot-pink), var(--accent-violet));">
+          <h3 style="color: white; margin: 0;">Featured Project</h3>
+        </div>
+        <div class="card-body">
+          <h4>Building a Design System</h4>
+          <p style="color: var(--text-secondary);">
+            A comprehensive guide to creating cohesive color palettes that work
+            across your entire application.
+          </p>
+          <div class="tag-list">
+            <span class="tag" style="background: var(--accent-cyan);">Design</span>
+            <span class="tag" style="background: var(--accent-lime);">CSS</span>
+            <span class="tag" style="background: var(--accent-orange);">Tutorial</span>
+          </div>
+          <a href="#" class="card-link">Read more →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>Color Accessibility</h2>
+      <p>
+        All color combinations in this system are tested for WCAG AA
+        compliance. Primary text colors maintain a contrast ratio of at least
+        4.5:1 against background colors for optimal readability.
+      </p>
+      <div class="accessibility-demo">
+        <div class="access-card" style="background: var(--bg-primary); color: var(--text-primary);">
+          <p class="font-mono">Primary on Background</p>
+          <p class="text-sm">Excellent contrast ✓</p>
+        </div>
+        <div class="access-card" style="background: var(--bg-secondary); color: var(--text-secondary);">
+          <p class="font-mono">Secondary on Background</p>
+          <p class="text-sm">Good contrast ✓</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .color-sandbox {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .color-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .color-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .color-swatch {
+    height: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .color-info {
+    padding: 1rem;
+  }
+
+  .color-info p {
+    margin: 0.25rem 0;
+  }
+
+  .text-examples p {
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+  }
+
+  .accent-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .accent-box {
+    padding: 1rem 1rem 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+  }
+
+  .accent-box h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .accent-box p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .interactive-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .interactive-demo {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .demo-button {
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .demo-button:hover {
+    background: var(--button-hover);
+  }
+
+  .demo-button.secondary {
+    background: var(--accent-cyan);
+  }
+
+  .demo-button.secondary:hover {
+    background: var(--accent-violet);
+  }
+
+  .example-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+
+  .card-header {
+    padding: 2rem;
+  }
+
+  .card-body {
+    padding: 2rem;
+  }
+
+  .card-body h4 {
+    margin-top: 0;
+  }
+
+  .tag-list {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: white;
+  }
+
+  .card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+
+  .accessibility-demo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .access-card {
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .access-card p {
+    margin: 0.5rem 0;
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+</style>

@@ -166,9 +166,9 @@ a {
   font-family: inherit;
   color: var(--link-default);
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  transition: color 0.2s ease;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 50ms;
 }
 
 a:hover {

@@ -4,11 +4,57 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CardGrid from "../components/CardGrid.astro";
 import Card from "../components/Card.astro";
 import Button from "../components/Button.astro";
+import IconButton from "../components/IconButton.astro";
 ---
 
 <BaseLayout title="Hi, I'm Jon">
-  <h1>Hi, I'm Jon</h1>
-  <p class="text-2xl">
-    I'm still working on building this out <strong>:(</strong>
-  </p>
+  <div class="wrapper">
+    <div>
+      <h1>Hi, I'm Jon</h1>
+      <p class="text-2xl">
+        I'm still working on building this out <strong>:(</strong>
+      </p>
+      <p style="font-size: 2rem">
+        <IconButton
+          icon="github"
+          href="https://github.com/jonwrona"
+          target="_blank"
+          color="violet"
+          label="Visit my Github profile"
+          title="Github"
+        />
+        <IconButton
+          icon="bluesky"
+          href="https://bsky.app/profile/wrona.dev"
+          target="_blank"
+          color="cyan"
+          label="Follow me on Bluesky"
+          title="Bluesky"
+        />
+        <IconButton
+          icon="linkedin"
+          href="https://www.linkedin.com/in/jonwrona/"
+          target="_blank"
+          color="hot-pink"
+          label="Connect on LinkedIn"
+          title="LinkedIn"
+        />
+      </p>
+    </div>
+  </div>
+  <div class="text-sm" style="position: fixed; right: 1rem; bottom: 1rem;">
+    Icons from <a href="https://pixeliconlibrary.com/">Pixel Icon Library</a> by <a
+      href="https://hackernoon.com/">HackerNoon</a
+    >
+  </div>
 </BaseLayout>
+
+<style>
+  .wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

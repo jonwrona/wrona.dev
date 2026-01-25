@@ -1,41 +1,65 @@
 ---
 // CRT screen component with optional fisheye distortion effect
 interface Props {
-  enabled?: boolean;
   scale?: number;
   slope?: number;
   intercept?: number;
 }
 
 const {
-  enabled = true,
   scale = 200,
   slope = 0.8,
   intercept = 0.1,
 } = Astro.props;
 ---
 
-{enabled && (
-  <svg style="position: fixed; top: 0; left: 0; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-      <filter id="fisheye-filter" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
-        <feImage xlink:href="/fisheye.png" result="displacementRaw" preserveAspectRatio="xMidYMid slice" />
-        <!-- Adjust displacement map to be centered at 0.5 (neutral) -->
-        <feComponentTransfer in="displacementRaw" result="displacement">
-          <feFuncR type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
-          <feFuncG type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
-        </feComponentTransfer>
-        <feDisplacementMap in="SourceGraphic" in2="displacement" scale={scale.toString()} xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </defs>
-  </svg>
-)}
+<svg id="crt-filter-svg" style="position: fixed; top: 0; left: 0; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="fisheye-filter" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+      <feImage xlink:href="/fisheye.png" result="displacementRaw" preserveAspectRatio="xMidYMid slice" />
+      <!-- Adjust displacement map to be centered at 0.5 (neutral) -->
+      <feComponentTransfer in="displacementRaw" result="displacement">
+        <feFuncR type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
+        <feFuncG type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
+      </feComponentTransfer>
+      <feDisplacementMap in="SourceGraphic" in2="displacement" scale={scale.toString()} xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
 
-<div class="crt-screen" class:list={{ 'crt-filter-enabled': enabled }}>
+<div class="crt-screen">
   <div class="crt-content">
     <slot />
   </div>
 </div>
+
+<script>
+  import { crtEnabled } from "../stores/crtStore";
+
+  // Subscribe to store and update CRT effect
+  crtEnabled.subscribe((enabled) => {
+    const crtScreen = document.querySelector(".crt-screen");
+    const svg = document.getElementById("crt-filter-svg");
+
+    if (crtScreen && svg) {
+      if (enabled) {
+        crtScreen.classList.add("crt-filter-enabled");
+        svg.style.display = "";
+      } else {
+        crtScreen.classList.remove("crt-filter-enabled");
+        svg.style.display = "none";
+      }
+    }
+  });
+
+  // Detect clicks outside the CRT screen to toggle effect
+  document.addEventListener("click", (e) => {
+    const crtScreen = document.querySelector(".crt-screen");
+    if (crtScreen && !crtScreen.contains(e.target)) {
+      crtEnabled.set(!crtEnabled.get());
+    }
+  });
+</script>
 
 <style>
   .crt-screen {

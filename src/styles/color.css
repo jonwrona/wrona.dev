@@ -11,15 +11,20 @@
   --text-muted: #8b8b8b;
 
   /* Accent colors */
-  --accent-terracotta: #d4745e;
-  --accent-rust: #c77850;
-  --accent-sage: #8b9d83;
-  --accent-taupe: #a68a7a;
-  --accent-sienna: #b85c38;
+  --accent-hot-pink: #ff1493;
+  --accent-hot-pink-dark: #c71073;
+  --accent-cyan: #00ced1;
+  --accent-cyan-dark: #0099a3;
+  --accent-lime: #32cd32;
+  --accent-lime-dark: #28a428;
+  --accent-orange: #ff6347;
+  --accent-orange-dark: #d9452f;
+  --accent-violet: #8a2be2;
+  --accent-violet-dark: #6a1fb1;
 
   /* Interactive elements */
-  --link-default: #d4745e;
-  --link-hover: #c77850;
-  --button-bg: #d4745e;
-  --button-hover: #b85c38;
+  --link-default: var(--accent-cyan);
+  --link-hover: var(--accent-cyan-dark);
+  --button-bg: var(--accent-cyan);
+  --button-hover: var(--accent-cyan-dark);
 }

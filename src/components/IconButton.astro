@@ -1,0 +1,89 @@
+---
+// IconButton component
+type AccentColor = "hot-pink" | "cyan" | "lime" | "orange" | "violet";
+
+interface Props {
+  icon: string;
+  href?: string;
+  size?: string;
+  color?: AccentColor;
+  target?: string;
+  onClick?: string;
+  label: string; // Required for accessibility
+  title?: string; // Optional tooltip, defaults to label
+  disabled?: boolean;
+}
+
+const {
+  icon,
+  href,
+  size = "32px",
+  color = "cyan",
+  target,
+  onClick,
+  label,
+  title,
+  disabled = false,
+} = Astro.props;
+const Tag = href ? "a" : "button";
+const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+
+// Map color name to CSS variable
+const colorVar = `var(--accent-${color})`;
+---
+
+<Tag
+  class="icon-button"
+  href={href}
+  target={target}
+  rel={rel}
+  onclick={onClick}
+  aria-label={label}
+  title={title || label}
+  aria-disabled={disabled}
+  disabled={Tag === "button" ? disabled : undefined}
+  tabindex={disabled ? -1 : undefined}
+  style={`font-size: ${size}; --size: ${size}; --color: ${colorVar};`}
+>
+  <i class={`hn hn-${icon}`} aria-hidden="true"></i>
+</Tag>
+
+<style>
+  .icon-button {
+    height: var(--size);
+    width: var(--size);
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    color: inherit;
+    text-shadow: 4px 4px rgba(1, 1, 1, 0.2);
+
+    transition: all 200ms var(--ease-out-back);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-basis: var(--size);
+
+    &:hover {
+      transition: all 25ms linear;
+      cursor: pointer;
+      text-shadow: 1px 1px rgba(1, 1, 1, 0.2);
+      color: var(--color);
+      transform: translate(3px, 3px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    &[aria-disabled="true"] {
+      color: var(--text-muted);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+</style>
