@@ -23,7 +23,8 @@
     "ogl": "^1.0.11",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "sass": "^1.97.3"
+    "sass": "^1.97.3",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "prettier": "3.8.1",
