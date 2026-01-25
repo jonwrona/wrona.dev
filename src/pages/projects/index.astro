@@ -13,7 +13,13 @@ import Card from "../../components/Card.astro";
 <BaseLayout title="Things I've made">
   <div>
     <CardGrid maxColumns={4}>
-      {projects.map(({ data }) => <Card>{data.title}</Card>)}
+      {
+        projects.map(({ data }) => (
+          <Card>
+            {data.title} | {data.id}
+          </Card>
+        ))
+      }
     </CardGrid>
   </div>
 </BaseLayout>

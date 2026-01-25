@@ -1,14 +1,18 @@
 ---
 export const prerender = false;
 
+import { getEntry } from "astro:content";
+import { Markdown } from "@astropub/md";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const { slug } = Astro.params;
+const { data } = await getEntry("projects", slug);
 ---
 
-<BaseLayout title={slug}>
+<BaseLayout title={data.title}>
   <div>
-    <h1>{slug}</h1>
+    <h1>{data.title}</h1>
     <p>This will be a project page with some details.</p>
+    <Markdown of={data.markdown} />
   </div>
 </BaseLayout>
