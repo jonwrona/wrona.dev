@@ -18,7 +18,7 @@ const {
 {enabled && (
   <svg style="position: fixed; top: 0; left: 0; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-      <filter id="fisheye-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+      <filter id="fisheye-filter" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
         <feImage xlink:href="/fisheye.png" result="displacementRaw" preserveAspectRatio="xMidYMid slice" />
         <!-- Adjust displacement map to be centered at 0.5 (neutral) -->
         <feComponentTransfer in="displacementRaw" result="displacement">
@@ -39,26 +39,53 @@ const {
 
 <style>
   .crt-screen {
+    --border-width: 2.5rem;
+    contain: layout style paint;
     position: relative;
     box-sizing: border-box;
-    width: calc(100vw - 1.5rem);
-    height: calc(100vh - 1.5rem);
+    width: calc(100vw - var(--border-width));
+    height: calc(100vh - var(--border-width));
     overflow: hidden;
+    border-radius:.25rem;
   }
 
   .crt-content {
-    background: green;
-    color: white;
+    color: #010101;
     height: 100%;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     overflow-y: auto;
     box-sizing: border-box;
     position: relative;
-    z-index: 2;
+    background: var(--bg-primary);
+    z-index: 1;
+
+    &::after {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      --scanline-color: #2C2C2C;
+      --scanline-weight: 4px;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent var(--scanline-weight),
+        var(--scanline-color) var(--scanline-weight),
+        var(--scanline-color) calc(var(--scanline-weight) * 2)
+      );
+      opacity: 0.05;
+      z-index: 999999;
+    }
   }
+
 
   .crt-filter-enabled {
     filter: url(#fisheye-filter);
+    transform: translate3d(0,0,0);
+    will-change: transform;
   }
 </style>

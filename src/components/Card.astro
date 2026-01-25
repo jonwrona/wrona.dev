@@ -1,0 +1,30 @@
+---
+// Card component
+interface Props {
+  onClick?: () => void;
+  href?: string;
+}
+
+const {} = Astro.props;
+---
+
+<div class="card"><slot /></div>
+
+<style>
+  .card {
+    background: var(--bg-secondary);
+    border: 0.25rem solid var(--text-primary);
+    padding: 0.5rem;
+    box-shadow: 4px 4px rgba(1, 1, 1, 0.1);
+
+    transition: all 200ms var(--ease-out-back);
+
+    &:hover {
+      /* transition: all 200ms var(--ease-in-back); */
+      cursor: pointer;
+      box-shadow: 1px 1px rgba(1, 1, 1, 0.1);
+      border-color: var(--accent-rust);
+      transform: translate(3px, 3px);
+    }
+  }
+</style>

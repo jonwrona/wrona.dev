@@ -1,0 +1,21 @@
+---
+// Card grid component
+interface Props {
+  minWidth?: number;
+}
+
+const { minWidth = "240px" } = Astro.props;
+---
+
+<div class="card-grid">
+  <slot />
+</div>
+
+<style define:vars={{ minWidth }}>
+  .card-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(var(--minWidth), 1fr));
+    grid-auto-rows: auto;
+  }
+</style>

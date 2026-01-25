@@ -1,0 +1,25 @@
+:root {
+  --white: #ffffff;
+
+  /* Background gradient colors */
+  --bg-primary: #fff8f0;
+  --bg-secondary: #f5f0e8;
+
+  /* Text colors */
+  --text-primary: #2c2c2c;
+  --text-secondary: #5a5a5a;
+  --text-muted: #8b8b8b;
+
+  /* Accent colors */
+  --accent-terracotta: #d4745e;
+  --accent-rust: #c77850;
+  --accent-sage: #8b9d83;
+  --accent-taupe: #a68a7a;
+  --accent-sienna: #b85c38;
+
+  /* Interactive elements */
+  --link-default: #d4745e;
+  --link-hover: #c77850;
+  --button-bg: #d4745e;
+  --button-hover: #b85c38;
+}

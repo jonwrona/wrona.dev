@@ -1,0 +1,232 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Typography Sandbox">
+  <div class="type-sandbox">
+    <section class="section">
+      <h1>Display Headers (Jersey 10)</h1>
+      <p class="text-sm">Used for hero sections and major page titles</p>
+    </section>
+
+    <section class="section">
+      <h1>Heading 1 - The Quick Brown Fox</h1>
+      <h2>Heading 2 - The Quick Brown Fox</h2>
+      <h3>Heading 3 - The Quick Brown Fox</h3>
+    </section>
+
+    <section class="section">
+      <h2>Body Headers (Space Grotesk)</h2>
+      <p class="text-sm">Used for section headers within content</p>
+    </section>
+
+    <section class="section">
+      <h4>Heading 4 - The Quick Brown Fox</h4>
+      <h5>Heading 5 - The Quick Brown Fox</h5>
+      <h6>Heading 6 - The Quick Brown Fox</h6>
+    </section>
+
+    <section class="section">
+      <h2>Body Text</h2>
+      <p>
+        This is a standard paragraph using Space Grotesk. It's designed for
+        optimal readability with a line-height of 1.6. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua.
+      </p>
+      <p>
+        Multiple paragraphs are properly spaced. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Text Size Utilities</h2>
+      <div class="size-examples">
+        <p class="text-xs">Extra Small (.text-xs) - 0.75rem</p>
+        <p class="text-sm">Small (.text-sm) - 0.875rem</p>
+        <p class="text-base">Base (.text-base) - 1rem</p>
+        <p class="text-lg">Large (.text-lg) - 1.125rem</p>
+        <p class="text-xl">Extra Large (.text-xl) - 1.25rem</p>
+        <p class="text-2xl">2X Large (.text-2xl) - 1.5rem</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Font Family Utilities</h2>
+      <div class="font-examples">
+        <p class="font-display">
+          Display Font (Jersey 10) - Bold and Impactful
+        </p>
+        <p class="font-body">Body Font (Space Grotesk) - Clean and Readable</p>
+        <p class="font-mono">
+          Monospace Font (Space Mono) - Technical and Precise
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Code & Monospace (Space Mono)</h2>
+      <p>
+        Inline code looks like this: <code>const greeting = "Hello World";</code
+        > and is perfect for technical documentation.
+      </p>
+      <pre>{`
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+const result = fibonacci(10);
+console.log(result);`
+}</pre>
+      <p>
+        Keyboard shortcuts use <kbd>Ctrl</kbd> + <kbd>C</kbd> for copy and
+        <kbd>Ctrl</kbd> + <kbd>V</kbd> for paste.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Lists</h2>
+      <div class="list-examples">
+        <div>
+          <h4>Unordered List</h4>
+          <ul>
+            <li>First item in the list</li>
+            <li>Second item with more text to show line wrapping behavior</li>
+            <li>Third item</li>
+            <li>
+              Nested list item
+              <ul>
+                <li>Nested item one</li>
+                <li>Nested item two</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ordered List</h4>
+          <ol>
+            <li>First step in the process</li>
+            <li>Second step with more detailed information</li>
+            <li>Third step</li>
+            <li>Final step</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Blockquotes</h2>
+      <blockquote>
+        "This is a blockquote using Space Grotesk in italic style. It's slightly
+        larger than body text and has a distinctive border for emphasis. Perfect
+        for testimonials, quotes, or callouts."
+      </blockquote>
+    </section>
+
+    <section class="section">
+      <h2>Links</h2>
+      <p>
+        Here's a <a href="#">standard link</a> with proper underline styling. Links
+        inherit their parent's font family and maintain <a href="#"
+          >good readability</a
+        > throughout the text.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Real-World Example</h2>
+      <article class="example-article">
+        <h1>Building Modern Web Applications</h1>
+        <p class="text-lg">
+          A comprehensive guide to creating responsive, accessible, and
+          performant websites in 2026.
+        </p>
+
+        <h3>Introduction</h3>
+        <p>
+          Modern web development requires a solid foundation in typography,
+          spacing, and visual hierarchy. This example demonstrates how our type
+          system creates natural reading flow and visual structure.
+        </p>
+
+        <h4>Key Technologies</h4>
+        <ul>
+          <li>Astro for static site generation</li>
+          <li>CSS custom properties for theming</li>
+          <li>Responsive typography with clamp()</li>
+        </ul>
+
+        <h4>Code Example</h4>
+        <pre>
+// Example Astro component
+const title = "My Project";
+const description = "A modern web app";
+</pre>
+
+        <blockquote>
+          "The details are not the details. They make the design." - Charles
+          Eames
+        </blockquote>
+
+        <p>
+          For more information, visit the <a href="#">documentation</a> or check out
+          the
+          <code>type.css</code> file in your project.
+        </p>
+      </article>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .type-sandbox {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  .size-examples p,
+  .font-examples p {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+  }
+
+  .list-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .list-examples {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .example-article {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+  }
+
+  .example-article h1 {
+    margin-top: 0;
+  }
+</style>

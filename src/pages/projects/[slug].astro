@@ -1,0 +1,14 @@
+---
+export const prerender = false;
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const { slug } = Astro.params;
+---
+
+<BaseLayout title={slug}>
+  <div>
+    <h1>{slug}</h1>
+    <p>This will be a project page with some details.</p>
+  </div>
+</BaseLayout>
