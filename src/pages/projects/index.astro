@@ -15,7 +15,7 @@ import Card from "../../components/Card.astro";
     <CardGrid maxColumns={4}>
       {
         projects.map(({ data }) => (
-          <Card>
+          <Card href={`/projects/${data.id}`}>
             {data.title} | {data.id}
           </Card>
         ))

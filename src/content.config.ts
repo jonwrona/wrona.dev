@@ -16,19 +16,26 @@ const projects = defineCollection({
       },
     );
     const data = await response.json();
-    console.log(JSON.stringify(data, null, 2));
     return (
-      data.records?.map(({ id, fields }) => ({
-        id: slugify(fields["Title"] || id, { strict: true, lower: true }),
-        title: fields["Title"],
-        markdown: fields["Page Content"],
-      })) || []
+      data.records?.map(
+        ({
+          id,
+          fields,
+        }: {
+          id: string | number;
+          fields: Record<string, any>;
+        }) => ({
+          id: slugify(fields["Title"] || id, { strict: true, lower: true }),
+          title: fields["Title"],
+          markdown: fields["Page Content"],
+        }),
+      ) || []
     );
   },
   schema: z.object({
     id: z.string(),
     title: z.string(),
-    markdown: z.coerce.string(),
+    markdown: z.nullable(z.string()),
   }),
 });
 
