@@ -66,7 +66,8 @@ const colorVar = `var(--accent-${color})`;
     text-decoration: none;
     flex-basis: var(--size);
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       transition: all 25ms linear;
       cursor: pointer;
       text-shadow: 1px 1px rgba(1, 1, 1, 0.2);
@@ -76,7 +77,7 @@ const colorVar = `var(--accent-${color})`;
 
     &:focus-visible {
       outline: 2px solid var(--color);
-      outline-offset: 2px;
+      /* outline-offset: 2px; */
       border-radius: 2px;
     }
 

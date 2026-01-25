@@ -1,0 +1,32 @@
+---
+import Button from "./Button.astro";
+
+// Navigation component
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<nav class="nav">
+  <Button href="/projects">Projects</Button>
+  <Button>About</Button>
+  <Button>For Fun</Button>
+</nav>
+<div class="nav-spacer"></div>
+
+<style lang="scss">
+  .nav {
+    position: fixed;
+    width: calc(100% - 4rem);
+    left: 2rem;
+    top: 2rem;
+    display: flex;
+    gap: 1rem;
+    // justify-content: center;
+  }
+
+  .nav-spacer {
+    height: 8rem;
+    content: "";
+  }
+</style>

@@ -10,20 +10,25 @@ const {} = Astro.props;
 
 <div class="card"><slot /></div>
 
-<style>
+<style lang="scss">
+  @use "../styles/corners.scss" as *;
+
   .card {
-    background: var(--bg-secondary);
-    border: 0.25rem solid var(--text-primary);
+    --shadow-distance: 4px;
+    position: relative;
     padding: 0.5rem;
-    box-shadow: 4px 4px rgba(1, 1, 1, 0.1);
+    background: var(--bg-secondary);
+    aspect-ratio: var(--aspectRatio);
+    box-shadow: var(--shadow-distance) var(--shadow-distance) rgba(1, 1, 1, 0.1);
+    border-radius: 0.5rem;
+    border: 4px solid var(--accent-lime);
 
     transition: all 200ms var(--ease-out-back);
 
     &:hover {
       transition: all 25ms linear;
       cursor: pointer;
-      box-shadow: 1px 1px rgba(1, 1, 1, 0.1);
-      border-color: var(--accent-hot-pink);
+      box-shadow: 0 0 rgba(1, 1, 1, 0.1);
       transform: translate(3px, 3px);
     }
   }

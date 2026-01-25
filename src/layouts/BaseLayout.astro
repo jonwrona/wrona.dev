@@ -4,10 +4,11 @@ import "@fontsource/space-grotesk";
 import "@fontsource/space-mono";
 import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
 
-import "../styles/reset.css";
-import "../styles/global.css";
-import "../styles/color.css";
-import "../styles/type.css";
+import "../styles/reset.scss";
+import "../styles/corners.scss";
+import "../styles/color.scss";
+import "../styles/type.scss";
+import "../styles/global.scss";
 
 import CRT from "../components/CRT.astro";
 import Navigation from "../components/Navigation.astro";
@@ -30,9 +31,18 @@ const { title = "wrona.dev" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <CRT scale={100}>
-      <slot />
-      <Navigation />
+    <CRT>
+      <div class="wrapper">
+        <Navigation />
+        <slot />
+      </div>
     </CRT>
   </body>
 </html>
+
+<style>
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

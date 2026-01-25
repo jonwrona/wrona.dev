@@ -18,10 +18,12 @@
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.15",
+    "autoprefixer": "^10.4.23",
     "nanostores": "^1.1.0",
     "ogl": "^1.0.11",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "sass": "^1.97.3"
   },
   "devDependencies": {
     "prettier": "3.8.1",

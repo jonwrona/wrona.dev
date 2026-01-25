@@ -7,9 +7,21 @@ const {} = Astro.props;
 
 <div class="button"><slot /></div>
 
-<style>
+<style lang="scss">
   .button {
-    border: 0.5rem solid red;
+    font-family: var(--font-mono);
+    background: var(--accent-hot-pink);
     padding: 1rem;
+    color: white;
+    box-shadow: 4px 4px rgba(1, 1, 1, 0.3);
+    border-radius: 0.5rem;
+    transition: all 200ms var(--ease-out-back);
+
+    &:hover {
+      transition: all 50ms linear;
+      transform: translate(4px, 4px);
+      box-shadow: 0 0;
+      cursor: pointer;
+    }
   }
 </style>

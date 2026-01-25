@@ -2,20 +2,40 @@
 // Card grid component
 interface Props {
   minWidth?: number;
+  aspectRatio?: string;
+  maxColumns?: number;
+  gap?: string;
 }
 
-const { minWidth = "240px" } = Astro.props;
+const {
+  minWidth = "240px",
+  aspectRatio = "1 / 1",
+  maxColumns = 8,
+  gap = "1rem",
+} = Astro.props;
 ---
 
 <div class="card-grid">
   <slot />
 </div>
 
-<style define:vars={{ minWidth }}>
+<style lang="scss" define:vars={{ minWidth, aspectRatio, maxColumns, gap }}>
   .card-grid {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(var(--minWidth), 1fr));
+
+    --gap-count: calc(var(--maxColumns) - 1);
+    --total-gap-width: calc(var(--gap-count) * var(--gap));
+    --maxWidth: calc((100% - var(--total-gap-width)) / var(--maxColumns));
+
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(max(var(--minWidth), var(--maxWidth)), 1fr)
+    );
+    grid-gap: var(--gap);
     grid-auto-rows: auto;
+
+    > * {
+      aspect-ratio: var(--aspectRatio);
+    }
   }
 </style>

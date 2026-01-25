@@ -6,28 +6,51 @@ interface Props {
   intercept?: number;
 }
 
-const {
-  scale = 200,
-  slope = 0.8,
-  intercept = 0.1,
-} = Astro.props;
+const { scale = 100, slope = 0.8, intercept = 0.1 } = Astro.props;
 ---
 
-<svg id="crt-filter-svg" style="position: fixed; top: 0; left: 0; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg
+  id="crt-filter-svg"
+  style="position: fixed; top: 0; left: 0; width: 0; height: 0;"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
   <defs>
-    <filter id="fisheye-filter" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
-      <feImage xlink:href="/fisheye.png" result="displacementRaw" preserveAspectRatio="xMidYMid slice" />
+    <filter
+      id="fisheye-filter"
+      x="0"
+      y="0"
+      width="100%"
+      height="100%"
+      filterUnits="objectBoundingBox"
+      color-interpolation-filters="sRGB"
+    >
+      <feImage
+        xlink:href="/fisheye.png"
+        result="displacementRaw"
+        preserveAspectRatio="xMidYMid slice"></feImage>
       <!-- Adjust displacement map to be centered at 0.5 (neutral) -->
       <feComponentTransfer in="displacementRaw" result="displacement">
-        <feFuncR type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
-        <feFuncG type="linear" slope={slope.toString()} intercept={intercept.toString()}/>
+        <feFuncR
+          type="linear"
+          slope={slope.toString()}
+          intercept={intercept.toString()}></feFuncR>
+        <feFuncG
+          type="linear"
+          slope={slope.toString()}
+          intercept={intercept.toString()}></feFuncG>
       </feComponentTransfer>
-      <feDisplacementMap in="SourceGraphic" in2="displacement" scale={scale.toString()} xChannelSelector="R" yChannelSelector="G" />
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="displacement"
+        scale={scale.toString()}
+        xChannelSelector="R"
+        yChannelSelector="G"></feDisplacementMap>
     </filter>
   </defs>
 </svg>
 
-<div class="crt-screen">
+<div class="crt-screen crt-filter-enabled">
   <div class="crt-content">
     <slot />
   </div>
@@ -35,6 +58,22 @@ const {
 
 <script>
   import { crtEnabled } from "../stores/crtStore";
+
+  function applyCRTEffect() {
+    const crtScreen = document.querySelector(".crt-screen");
+    const svg = document.getElementById("crt-filter-svg");
+
+    if (crtScreen && svg) {
+      const enabled = crtEnabled.get();
+      if (enabled) {
+        crtScreen.classList.add("crt-filter-enabled");
+        svg.style.display = "";
+      } else {
+        crtScreen.classList.remove("crt-filter-enabled");
+        svg.style.display = "none";
+      }
+    }
+  }
 
   // Subscribe to store and update CRT effect
   crtEnabled.subscribe((enabled) => {
@@ -52,10 +91,16 @@ const {
     }
   });
 
+  // Apply effect on initial load
+  applyCRTEffect();
+
+  // Reapply on view transitions
+  document.addEventListener("astro:page-load", applyCRTEffect);
+
   // Detect clicks outside the CRT screen to toggle effect
   document.addEventListener("click", (e) => {
     const crtScreen = document.querySelector(".crt-screen");
-    if (crtScreen && !crtScreen.contains(e.target)) {
+    if (crtScreen && !crtScreen.contains(e.target as Node)) {
       crtEnabled.set(!crtEnabled.get());
     }
   });
@@ -70,7 +115,7 @@ const {
     width: calc(100vw - var(--border-width));
     height: calc(100vh - var(--border-width));
     overflow: hidden;
-    border-radius:.25rem;
+    border-radius: 0.25rem;
   }
 
   .crt-content {
@@ -92,7 +137,7 @@ const {
       left: -10%;
       width: 120%;
       height: 120%;
-      --scanline-color: #2C2C2C;
+      --scanline-color: #2c2c2c;
       --scanline-weight: 4px;
       background: repeating-linear-gradient(
         0deg,
@@ -106,10 +151,9 @@ const {
     }
   }
 
-
   .crt-filter-enabled {
     filter: url(#fisheye-filter);
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
     will-change: transform;
   }
 </style>
