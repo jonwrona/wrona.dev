@@ -18,6 +18,7 @@
     "@hackernoon/pixel-icon-library": "^1.0.6",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
+    "@vercel/analytics": "^1.6.1",
     "astro": "^5.16.15",
     "autoprefixer": "^10.4.23",
     "nanostores": "^1.1.0",
