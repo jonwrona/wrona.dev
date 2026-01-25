@@ -10,7 +10,7 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.5",
+    "@astrojs/vercel": "^9.0.4",
     "@fontsource/jersey-10": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.10",
     "@fontsource/space-mono": "^5.2.9",

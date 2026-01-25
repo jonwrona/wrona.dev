@@ -8,9 +8,10 @@ const {} = Astro.props;
 ---
 
 <nav class="nav">
-  <Button href="/projects">Projects</Button>
-  <Button>About</Button>
-  <Button>For Fun</Button>
+  <Button href="/" color="violet">wrona.dev</Button>
+  <Button href="/projects" color="hot-pink">Projects</Button>
+  <Button color="cyan">About</Button>
+  <Button color="lime">For Fun</Button>
 </nav>
 <div class="nav-spacer"></div>
 
@@ -18,15 +19,15 @@ const {} = Astro.props;
   .nav {
     position: fixed;
     width: calc(100% - 4rem);
-    left: 2rem;
-    top: 2rem;
+    left: 1rem;
+    top: 1rem;
     display: flex;
     gap: 1rem;
     // justify-content: center;
   }
 
   .nav-spacer {
-    height: 8rem;
+    height: 5rem;
     content: "";
   }
 </style>

@@ -8,7 +8,7 @@ import IconButton from "../components/IconButton.astro";
 ---
 
 <BaseLayout title="Hi, I'm Jon">
-  <div class="wrapper">
+  <main>
     <div>
       <h1>Hi, I'm Jon</h1>
       <p class="text-2xl">
@@ -41,7 +41,7 @@ import IconButton from "../components/IconButton.astro";
         />
       </p>
     </div>
-  </div>
+  </main>
   <div class="text-sm" style="position: fixed; right: 1rem; bottom: 1rem;">
     Icons from <a href="https://pixeliconlibrary.com/">Pixel Icon Library</a> by <a
       href="https://hackernoon.com/">HackerNoon</a
@@ -50,7 +50,7 @@ import IconButton from "../components/IconButton.astro";
 </BaseLayout>
 
 <style>
-  .wrapper {
+  main {
     height: auto;
     flex-grow: 1;
     width: 100%;

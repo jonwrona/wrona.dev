@@ -1,27 +1,80 @@
 ---
 // Button component
-interface Props {}
+type AccentColor = "hot-pink" | "cyan" | "lime" | "orange" | "violet";
 
-const {} = Astro.props;
+interface Props {
+  href?: string;
+  color?: AccentColor;
+  target?: string;
+  onClick?: string;
+  label?: string; // For accessibility (aria-label)
+  title?: string; // Optional tooltip
+  disabled?: boolean;
+}
+
+const {
+  href,
+  color = "hot-pink",
+  target,
+  onClick,
+  label,
+  title,
+  disabled = false,
+} = Astro.props;
+
+const Tag = href ? "a" : "button";
+const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+
+// Map color name to CSS variable
+const colorVar = `var(--accent-${color})`;
 ---
 
-<div class="button"><slot /></div>
+<Tag
+  class="button"
+  href={href}
+  target={target}
+  rel={rel}
+  onclick={onClick}
+  aria-label={label}
+  title={title}
+  aria-disabled={disabled}
+  disabled={Tag === "button" ? disabled : undefined}
+  tabindex={disabled ? -1 : undefined}
+  style={`--color: ${colorVar};`}
+>
+  <slot />
+</Tag>
 
 <style lang="scss">
   .button {
+    all: unset;
+
     font-family: var(--font-mono);
-    background: var(--accent-hot-pink);
+    background: var(--color);
     padding: 1rem;
     color: white;
     box-shadow: 4px 4px rgba(1, 1, 1, 0.3);
     border-radius: 0.5rem;
     transition: all 200ms var(--ease-out-back);
+    display: inline-block;
+    box-sizing: border-box;
 
     &:hover {
       transition: all 50ms linear;
       transform: translate(4px, 4px);
       box-shadow: 0 0;
       cursor: pointer;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color);
+      outline-offset: 2px;
+    }
+
+    &[aria-disabled="true"] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 </style>
