@@ -1,6 +1,6 @@
 ---
 // Button component
-type AccentColor = "hot-pink" | "cyan" | "lime" | "orange" | "violet";
+type AccentColor = "green" | "amber" | "cyan" | "red" | "blue";
 
 interface Props {
   href?: string;
@@ -14,7 +14,7 @@ interface Props {
 
 const {
   href,
-  color = "hot-pink",
+  color = "cyan",
   target,
   onClick,
   label,
@@ -62,7 +62,7 @@ const colorVar = `var(--accent-${color})`;
     &:hover {
       transition: all 50ms linear;
       transform: translate(4px, 4px);
-      box-shadow: 0 0;
+      box-shadow: 0 0 rgba(1, 1, 1, 0.3);
       cursor: pointer;
     }
 

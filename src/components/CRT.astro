@@ -1,5 +1,6 @@
 ---
-// CRT screen component with optional fisheye distortion effect
+import CRT from "./CRT.tsx";
+
 interface Props {
   scale?: number;
   slope?: number;
@@ -9,104 +10,11 @@ interface Props {
 const { scale = 100, slope = 0.8, intercept = 0.1 } = Astro.props;
 ---
 
-<svg
-  id="crt-filter-svg"
-  style="position: fixed; top: 0; left: 0; width: 0; height: 0;"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
->
-  <defs>
-    <filter
-      id="fisheye-filter"
-      x="0"
-      y="0"
-      width="100%"
-      height="100%"
-      filterUnits="objectBoundingBox"
-      color-interpolation-filters="sRGB"
-    >
-      <feImage
-        xlink:href="/fisheye.png"
-        result="displacementRaw"
-        preserveAspectRatio="xMidYMid slice"></feImage>
-      <!-- Adjust displacement map to be centered at 0.5 (neutral) -->
-      <feComponentTransfer in="displacementRaw" result="displacement">
-        <feFuncR
-          type="linear"
-          slope={slope.toString()}
-          intercept={intercept.toString()}></feFuncR>
-        <feFuncG
-          type="linear"
-          slope={slope.toString()}
-          intercept={intercept.toString()}></feFuncG>
-      </feComponentTransfer>
-      <feDisplacementMap
-        in="SourceGraphic"
-        in2="displacement"
-        scale={scale.toString()}
-        xChannelSelector="R"
-        yChannelSelector="G"></feDisplacementMap>
-    </filter>
-  </defs>
-</svg>
+<CRT client:load scale={scale} slope={slope} intercept={intercept}>
+  <slot />
+</CRT>
 
-<div class="crt-screen crt-filter-enabled">
-  <div class="crt-content">
-    <slot />
-  </div>
-</div>
-
-<script>
-  import { crtEnabled } from "../stores/crtStore";
-
-  function applyCRTEffect() {
-    const crtScreen = document.querySelector(".crt-screen");
-    const svg = document.getElementById("crt-filter-svg");
-
-    if (crtScreen && svg) {
-      const enabled = crtEnabled.get();
-      if (enabled) {
-        crtScreen.classList.add("crt-filter-enabled");
-        svg.style.display = "";
-      } else {
-        crtScreen.classList.remove("crt-filter-enabled");
-        svg.style.display = "none";
-      }
-    }
-  }
-
-  // Subscribe to store and update CRT effect
-  crtEnabled.subscribe((enabled) => {
-    const crtScreen = document.querySelector(".crt-screen");
-    const svg = document.getElementById("crt-filter-svg");
-
-    if (crtScreen && svg) {
-      if (enabled) {
-        crtScreen.classList.add("crt-filter-enabled");
-        svg.style.display = "";
-      } else {
-        crtScreen.classList.remove("crt-filter-enabled");
-        svg.style.display = "none";
-      }
-    }
-  });
-
-  // Apply effect on initial load
-  applyCRTEffect();
-
-  // Reapply on view transitions
-  document.addEventListener("astro:page-load", applyCRTEffect);
-
-  // Detect clicks outside the CRT screen to toggle effect
-  document.addEventListener("click", (e) => {
-    const crtScreen = document.querySelector(".crt-screen");
-    if (crtScreen && !crtScreen.contains(e.target as Node)) {
-      crtEnabled.set(!crtEnabled.get());
-    }
-  });
-</script>
-
-<style>
+<style is:global>
   .crt-screen {
     --border-width: 2.5rem;
     contain: layout style paint;
@@ -128,27 +36,27 @@ const { scale = 100, slope = 0.8, intercept = 0.1 } = Astro.props;
     position: relative;
     background: var(--bg-primary);
     z-index: 1;
+  }
 
-    &::after {
-      content: "";
-      pointer-events: none;
-      position: fixed;
-      top: -10%;
-      left: -10%;
-      width: 120%;
-      height: 120%;
-      --scanline-color: #2c2c2c;
-      --scanline-weight: 4px;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent var(--scanline-weight),
-        var(--scanline-color) var(--scanline-weight),
-        var(--scanline-color) calc(var(--scanline-weight) * 2)
-      );
-      opacity: 0.05;
-      z-index: 999999;
-    }
+  .crt-content::after {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    --scanline-color: #2c2c2c;
+    --scanline-weight: 4px;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent var(--scanline-weight),
+      var(--scanline-color) var(--scanline-weight),
+      var(--scanline-color) calc(var(--scanline-weight) * 2)
+    );
+    opacity: 0.05;
+    z-index: 999999;
   }
 
   .crt-filter-enabled {

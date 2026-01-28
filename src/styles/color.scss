@@ -10,21 +10,18 @@
   --text-secondary: #5a5a5a;
   --text-muted: #8b8b8b;
 
-  /* Accent colors */
-  --accent-hot-pink: #ff1493;
-  --accent-hot-pink-dark: #c71073;
-  --accent-cyan: #00ced1;
-  --accent-cyan-dark: #0099a3;
-  --accent-lime: #32cd32;
-  --accent-lime-dark: #28a428;
-  --accent-orange: #ff6347;
-  --accent-orange-dark: #d9452f;
-  --accent-violet: #8a2be2;
-  --accent-violet-dark: #6a1fb1;
+  /* Accent colors - Retro Terminal Mix */
+  --accent-green: #33ff33;
+  --accent-green-dark: #29cc29;
+  --accent-amber: #ffaa00;
+  --accent-amber-dark: #cc8800;
+  --accent-cyan: #00dddd;
+  --accent-cyan-dark: #00b1b1;
+  --accent-red: #ff3366;
+  --accent-red-dark: #cc2952;
+  --accent-blue: #0099ff;
+  --accent-blue-dark: #007acc;
 
-  /* Interactive elements */
-  --link-default: var(--accent-cyan);
-  --link-hover: var(--accent-cyan-dark);
-  --button-bg: var(--accent-cyan);
-  --button-hover: var(--accent-cyan-dark);
+  /* Shadow colors */
+  --shadow-interactive: rgba(1, 1, 1, 0.3);
 }

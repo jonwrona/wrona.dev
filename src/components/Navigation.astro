@@ -1,5 +1,5 @@
 ---
-import Button from "./Button.astro";
+import NavButton from "./NavButton.astro";
 
 // Navigation component
 interface Props {}
@@ -8,26 +8,38 @@ const {} = Astro.props;
 ---
 
 <nav class="nav">
-  <Button href="/" color="violet">wrona.dev</Button>
-  <Button href="/projects" color="hot-pink">Projects</Button>
-  <Button color="cyan">About</Button>
-  <Button color="lime">For Fun</Button>
+  <NavButton href="/" ariaLabel="Home" highlightColor="green">
+    <i class="hn hn-home-solid"></i>
+  </NavButton>
+  <NavButton href="/about" highlightColor="amber">Who?</NavButton>
+  <NavButton href="/blog" highlightColor="cyan">Rambles</NavButton>
+  <NavButton href="/projects" highlightColor="red">Stuff</NavButton>
+  <NavButton ariaLabel="Settings">
+    <i class="hn hn-cog-solid"></i>
+  </NavButton>
 </nav>
 <div class="nav-spacer"></div>
 
 <style lang="scss">
   .nav {
     position: fixed;
-    width: calc(100% - 4rem);
-    left: 1rem;
-    top: 1rem;
+    background: var(--bg-secondary);
+    left: 50%;
+    border-radius: 0.5rem;
+    transform: translateX(-50%);
+    bottom: 2rem;
+    height: 4rem;
     display: flex;
-    gap: 1rem;
-    // justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 4px 4px var(--shadow-interactive);
+    padding: 0.5rem;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-family: var(--font-display);
   }
 
   .nav-spacer {
-    height: 5rem;
+    height: 8rem;
     content: "";
   }
 </style>

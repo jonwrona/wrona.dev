@@ -10,12 +10,14 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/vercel": "^9.0.4",
     "@astropub/md": "^1.0.0",
     "@fontsource/jersey-10": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.10",
     "@fontsource/space-mono": "^5.2.9",
     "@hackernoon/pixel-icon-library": "^1.0.6",
+    "@nanostores/react": "^1.0.0",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "@vercel/analytics": "^1.6.1",

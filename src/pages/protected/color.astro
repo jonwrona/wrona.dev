@@ -8,8 +8,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section class="section">
       <h1>Color System</h1>
       <p class="text-sm">
-        A warm, vibrant color palette for creating engaging and accessible
-        interfaces
+        A warm, retro-inspired color palette based on classic CRT terminals and phosphor displays.
+        Designed to complement the chromatic aberration aesthetic throughout the site.
       </p>
     </section>
 
@@ -100,20 +100,31 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </section>
 
     <section class="section">
-      <h2>Accent Colors</h2>
+      <h2>Accent Colors - Retro Terminal Mix</h2>
       <p class="text-sm">
-        Electric, high-energy neon colors perfect for modern, bold designs
+        Classic terminal colors with modern vibrancy. Perfect for the chromatic aberration aesthetic.
       </p>
       <div class="color-grid">
         <div class="color-card">
           <div
             class="color-swatch"
-            style="background: var(--accent-hot-pink);"
+            style="background: var(--accent-green);"
           ></div>
           <div class="color-info">
-            <p class="font-mono text-sm">--accent-hot-pink</p>
-            <p class="text-xs text-muted">#ff1493</p>
-            <p class="text-xs">Electric pink</p>
+            <p class="font-mono text-sm">--accent-green</p>
+            <p class="text-xs text-muted">#33ff33</p>
+            <p class="text-xs">Classic green phosphor</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-swatch"
+            style="background: var(--accent-amber);"
+          ></div>
+          <div class="color-info">
+            <p class="font-mono text-sm">--accent-amber</p>
+            <p class="text-xs text-muted">#ffaa00</p>
+            <p class="text-xs">Warm amber CRT</p>
           </div>
         </div>
         <div class="color-card">
@@ -123,41 +134,30 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           ></div>
           <div class="color-info">
             <p class="font-mono text-sm">--accent-cyan</p>
-            <p class="text-xs text-muted">#00ced1</p>
-            <p class="text-xs">Neon cyan</p>
+            <p class="text-xs text-muted">#00dddd</p>
+            <p class="text-xs">Matches chromatic aberration</p>
           </div>
         </div>
         <div class="color-card">
           <div
             class="color-swatch"
-            style="background: var(--accent-lime);"
+            style="background: var(--accent-red);"
           ></div>
           <div class="color-info">
-            <p class="font-mono text-sm">--accent-lime</p>
-            <p class="text-xs text-muted">#32cd32</p>
-            <p class="text-xs">Bright lime</p>
+            <p class="font-mono text-sm">--accent-red</p>
+            <p class="text-xs text-muted">#ff3366</p>
+            <p class="text-xs">Complements red shadow</p>
           </div>
         </div>
         <div class="color-card">
           <div
             class="color-swatch"
-            style="background: var(--accent-orange);"
+            style="background: var(--accent-blue);"
           ></div>
           <div class="color-info">
-            <p class="font-mono text-sm">--accent-orange</p>
-            <p class="text-xs text-muted">#ff6347</p>
-            <p class="text-xs">Neon orange</p>
-          </div>
-        </div>
-        <div class="color-card">
-          <div
-            class="color-swatch"
-            style="background: var(--accent-violet);"
-          ></div>
-          <div class="color-info">
-            <p class="font-mono text-sm">--accent-violet</p>
-            <p class="text-xs text-muted">#8a2be2</p>
-            <p class="text-xs">Electric violet</p>
+            <p class="font-mono text-sm">--accent-blue</p>
+            <p class="text-xs text-muted">#0099ff</p>
+            <p class="text-xs">Cursor/prompt blue</p>
           </div>
         </div>
       </div>
@@ -176,7 +176,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           ></div>
           <div class="color-info">
             <p class="font-mono text-sm">--link-default</p>
-            <p class="text-xs text-muted">#ff1493</p>
+            <p class="text-xs text-muted">#00dddd</p>
             <p class="text-xs">Default link state</p>
           </div>
         </div>
@@ -187,7 +187,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           ></div>
           <div class="color-info">
             <p class="font-mono text-sm">--link-hover</p>
-            <p class="text-xs text-muted">#00ced1</p>
+            <p class="text-xs text-muted">#00b1b1</p>
             <p class="text-xs">Link hover state</p>
           </div>
         </div>
@@ -198,7 +198,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           ></div>
           <div class="color-info">
             <p class="font-mono text-sm">--button-bg</p>
-            <p class="text-xs text-muted">#ff1493</p>
+            <p class="text-xs text-muted">#00dddd</p>
             <p class="text-xs">Button background</p>
           </div>
         </div>
@@ -209,7 +209,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           ></div>
           <div class="color-info">
             <p class="font-mono text-sm">--button-hover</p>
-            <p class="text-xs text-muted">#ff6347</p>
+            <p class="text-xs text-muted">#00b1b1</p>
             <p class="text-xs">Button hover state</p>
           </div>
         </div>
@@ -232,27 +232,27 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </section>
 
     <section class="section">
-      <h2>Accent Color in Action</h2>
+      <h2>Accent Colors in Action</h2>
       <div class="accent-examples">
-        <div class="accent-box" style="border-left: 4px solid var(--accent-hot-pink);">
-          <h4>Hot Pink</h4>
-          <p>Bold and energetic, perfect for primary actions</p>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-green);">
+          <h4>Terminal Green</h4>
+          <p>Perfect balance of retro and modern</p>
+        </div>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-amber);">
+          <h4>Amber Warm</h4>
+          <p>Warm CRT glow that's easy on the eyes</p>
         </div>
         <div class="accent-box" style="border-left: 4px solid var(--accent-cyan);">
-          <h4>Cyan</h4>
-          <p>Cool and refreshing, great for highlights</p>
+          <h4>Scanline Cyan</h4>
+          <p>Matches the chromatic aberration effect</p>
         </div>
-        <div class="accent-box" style="border-left: 4px solid var(--accent-lime);">
-          <h4>Lime</h4>
-          <p>Vibrant and lively, draws immediate attention</p>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-red);">
+          <h4>Error Red</h4>
+          <p>Complements the chromatic red shadow</p>
         </div>
-        <div class="accent-box" style="border-left: 4px solid var(--accent-orange);">
-          <h4>Orange</h4>
-          <p>Warm and inviting, ideal for CTAs</p>
-        </div>
-        <div class="accent-box" style="border-left: 4px solid var(--accent-violet);">
-          <h4>Violet</h4>
-          <p>Electric and modern, adds depth</p>
+        <div class="accent-box" style="border-left: 4px solid var(--accent-blue);">
+          <h4>Cursor Blue</h4>
+          <p>Clean, technical terminal aesthetic</p>
         </div>
       </div>
     </section>
@@ -264,12 +264,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <h4>Links</h4>
           <p>
             Here's a <a href="#">standard link</a> that uses our link colors.
-            Hover over <a href="#">this link</a> to see the hover state transition.
+            Hover over <a href="#">this link</a> to see the chromatic aberration animation.
           </p>
         </div>
         <div>
           <h4>Buttons</h4>
-          <button class="demo-button">Click Me</button>
+          <button class="demo-button">Primary Action</button>
           <button class="demo-button secondary">Secondary Action</button>
         </div>
       </div>
@@ -278,19 +278,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section class="section">
       <h2>Real-World Example</h2>
       <article class="example-card">
-        <div class="card-header" style="background: linear-gradient(135deg, var(--accent-hot-pink), var(--accent-violet));">
+        <div class="card-header" style="background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));">
           <h3 style="color: white; margin: 0;">Featured Project</h3>
         </div>
         <div class="card-body">
-          <h4>Building a Design System</h4>
+          <h4>Building a Retro CRT Design System</h4>
           <p style="color: var(--text-secondary);">
-            A comprehensive guide to creating cohesive color palettes that work
-            across your entire application.
+            A comprehensive guide to creating cohesive color palettes inspired by
+            vintage terminal displays and chromatic aberration effects.
           </p>
           <div class="tag-list">
-            <span class="tag" style="background: var(--accent-cyan);">Design</span>
-            <span class="tag" style="background: var(--accent-lime);">CSS</span>
-            <span class="tag" style="background: var(--accent-orange);">Tutorial</span>
+            <span class="tag" style="background: var(--accent-green);">Design</span>
+            <span class="tag" style="background: var(--accent-amber);">CSS</span>
+            <span class="tag" style="background: var(--accent-red);">Retro</span>
           </div>
           <a href="#" class="card-link">Read more →</a>
         </div>
@@ -429,11 +429,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   .demo-button.secondary {
-    background: var(--accent-cyan);
+    background: var(--accent-green);
   }
 
   .demo-button.secondary:hover {
-    background: var(--accent-violet);
+    background: var(--accent-green-dark);
   }
 
   .example-card {

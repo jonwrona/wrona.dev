@@ -1,0 +1,69 @@
+---
+type AccentColor = "green" | "amber" | "cyan" | "red" | "blue";
+
+interface Props {
+  href: string;
+  ariaLabel?: string;
+  highlightColor?: AccentColor;
+}
+
+const { href, ariaLabel, highlightColor } = Astro.props;
+const highlight = `var(--accent-${highlightColor});`;
+const shadowColor = highlightColor
+  ? `color-mix(in srgb, var(--accent-${highlightColor}) 30%, transparent)`
+  : "var(--shadow-interactive)";
+
+const currentPath = Astro.url.pathname;
+const isActive = currentPath === href;
+---
+
+<a
+  href={href}
+  class:list={["nav-button", { active: isActive }]}
+  aria-label={ariaLabel}
+>
+  <span>
+    <slot />
+  </span>
+</a>
+
+<style lang="scss" define:vars={{ highlight, shadowColor }}>
+  .nav-button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 200ms var(--ease-out-expo);
+
+    span {
+      display: inline-block;
+      transition: all 200ms var(--ease-out-expo);
+    }
+
+    &:hover {
+      transition: all 30ms linear;
+      box-shadow: inset 4px 4px var(--shadowColor);
+      border-bottom: 1px solid var(--shadowColor);
+      border-right: 1px solid var(--shadowColor);
+      background: color-mix(in srgb, var(--bg-secondary), black 3%);
+
+      span {
+        transition: all 30ms linear;
+        transform: translate(3px, 3px);
+      }
+    }
+
+    &.active {
+      // TODO
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--highlight, --text-secondary);
+      outline-offset: 2px;
+    }
+  }
+</style>

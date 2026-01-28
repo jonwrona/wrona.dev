@@ -164,17 +164,24 @@ li {
 /* Links */
 a {
   font-family: inherit;
+  display: inline-block;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
-  transition: color 50ms;
+  text-shadow:
+    0 0 transparent,
+    0 0 transparent,
+    1px 1px rgba(1, 1, 1, 0.3);
+  transition: all 200ms var(--ease-out-back);
 }
 
 a:hover {
+  transition: all 50ms linear;
   text-shadow:
-    2px 0 #ff0000,
-    -2px 0 #00ffff,
-    1px 1px rgba(1, 1, 1, 0.3);
+    0.0625em 0 #ff0000,
+    -0.0625em 0 #00ffff,
+    0 0 rgba(1, 1, 1, 0.3);
+  transform: translate(1px, 1px);
 }
 
 /* Blockquotes */
