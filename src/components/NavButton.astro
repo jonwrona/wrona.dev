@@ -38,6 +38,8 @@ const isActive = currentPath === href;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all 200ms var(--ease-out-expo);
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid transparent;
 
     span {
       display: inline-block;
@@ -47,13 +49,12 @@ const isActive = currentPath === href;
     &:hover {
       transition: all 30ms linear;
       box-shadow: inset 4px 4px var(--shadowColor);
-      border-bottom: 1px solid var(--shadowColor);
-      border-right: 1px solid var(--shadowColor);
+      border-color: var(--shadowColor);
       background: color-mix(in srgb, var(--bg-secondary), black 3%);
 
       span {
         transition: all 30ms linear;
-        transform: translate(3px, 3px);
+        transform: translate(4px, 4px);
       }
     }
 
