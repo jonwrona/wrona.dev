@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { useEffect, useRef, type ReactNode } from "react";
-import { crtEnabled, crtUserPreference } from "../stores/crtStore";
+import { crtEnabled, crtUserPreference, scanlinesEnabled } from "../stores/crtStore";
 
 interface CRTProps {
   children: ReactNode;
@@ -16,6 +16,7 @@ export default function CRT({
   intercept = 0.1
 }: CRTProps) {
   const enabled = useStore(crtEnabled);
+  const scanlines = useStore(scanlinesEnabled);
   const screenRef = useRef<HTMLDivElement>(null);
 
   // Handle clicks outside CRT screen to toggle preference
@@ -81,7 +82,7 @@ export default function CRT({
         ref={screenRef}
         className={`crt-screen ${enabled ? "crt-filter-enabled" : ""}`}
       >
-        <div className="crt-content">
+        <div className={`crt-content ${scanlines ? "crt-scanlines" : ""}`}>
           {children}
         </div>
       </div>

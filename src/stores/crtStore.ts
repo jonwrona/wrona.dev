@@ -1,13 +1,22 @@
-import { atom, computed, onMount } from 'nanostores';
+import { atom, computed, onMount } from "nanostores";
 
 // User's manual preference (persisted to localStorage)
 const getInitialUserPreference = (): boolean => {
-  if (typeof window === 'undefined') return true;
-  const saved = localStorage.getItem('crt-enabled');
-  return saved === null ? true : saved === 'true';
+  if (typeof window === "undefined") return true;
+  const saved = localStorage.getItem("crt-enabled");
+  return saved === null ? true : saved === "true";
+};
+
+const getInitialScanlinesPreference = (): boolean => {
+  if (typeof window === "undefined") return true;
+  const saved = localStorage.getItem("crt-scanlines-enabled");
+  return saved === null ? true : saved === "true";
 };
 
 export const crtUserPreference = atom<boolean>(getInitialUserPreference());
+export const scanlinesUserPreference = atom<boolean>(
+  getInitialScanlinesPreference(),
+);
 
 // Zoom detection state (computed, not persisted)
 export const isZoomed = atom<boolean>(false);
@@ -15,19 +24,28 @@ export const isZoomed = atom<boolean>(false);
 // Actual CRT enabled state (computed from both)
 export const crtEnabled = computed(
   [crtUserPreference, isZoomed],
-  (preference, zoomed) => preference && !zoomed
+  (preference, zoomed) => preference && !zoomed,
 );
 
-// Persist only user preference
-if (typeof window !== 'undefined') {
+// Actual scanlines enabled state (computed from preference and zoom)
+export const scanlinesEnabled = computed(
+  [scanlinesUserPreference, isZoomed],
+  (preference) => preference,
+);
+
+// Persist user preferences
+if (typeof window !== "undefined") {
   crtUserPreference.subscribe((value) => {
-    localStorage.setItem('crt-enabled', value.toString());
+    localStorage.setItem("crt-enabled", value.toString());
+  });
+  scanlinesUserPreference.subscribe((value) => {
+    localStorage.setItem("crt-scanlines-enabled", value.toString());
   });
 }
 
 // Set up zoom detection with lifecycle management
 onMount(isZoomed, () => {
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
 
   const checkZoom = (): void => {
     let scale = 1;
@@ -39,10 +57,10 @@ onMount(isZoomed, () => {
       // Fallback: devicePixelRatio comparison
       const initialDPR = window.devicePixelRatio || 1;
       const storedInitialDPR = parseFloat(
-        sessionStorage.getItem('initial-dpr') || initialDPR.toString()
+        sessionStorage.getItem("initial-dpr") || initialDPR.toString(),
       );
-      if (!sessionStorage.getItem('initial-dpr')) {
-        sessionStorage.setItem('initial-dpr', initialDPR.toString());
+      if (!sessionStorage.getItem("initial-dpr")) {
+        sessionStorage.setItem("initial-dpr", initialDPR.toString());
       }
       scale = initialDPR / storedInitialDPR;
     }
@@ -59,18 +77,18 @@ onMount(isZoomed, () => {
   const handleResize = () => checkZoom();
 
   if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', handleViewportChange);
-    window.visualViewport.addEventListener('scroll', handleViewportChange);
+    window.visualViewport.addEventListener("resize", handleViewportChange);
+    window.visualViewport.addEventListener("scroll", handleViewportChange);
   }
 
-  window.addEventListener('resize', handleResize);
+  window.addEventListener("resize", handleResize);
 
   // Cleanup
   return () => {
     if (window.visualViewport) {
-      window.visualViewport.removeEventListener('resize', handleViewportChange);
-      window.visualViewport.removeEventListener('scroll', handleViewportChange);
+      window.visualViewport.removeEventListener("resize", handleViewportChange);
+      window.visualViewport.removeEventListener("scroll", handleViewportChange);
     }
-    window.removeEventListener('resize', handleResize);
+    window.removeEventListener("resize", handleResize);
   };
 });
