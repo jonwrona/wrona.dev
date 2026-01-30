@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import CardGrid from "../../components/CardGrid.astro";
+import Card from "../../components/Card.astro";
+---
+
+<BaseLayout title="Ramblin' about stuff">
+  <div>
+    <CardGrid maxColumns={4}>
+      {
+        projects.map(({ data }) => (
+          <Card href={`/projects/${data.id}`}>
+            {data.title} | {data.id}
+          </Card>
+        ))
+      }
+    </CardGrid>
+  </div>
+</BaseLayout>
