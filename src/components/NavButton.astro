@@ -2,30 +2,41 @@
 type AccentColor = "green" | "amber" | "cyan" | "red" | "blue";
 
 interface Props {
-  href: string;
+  href?: string;
+  onClick?: string;
   ariaLabel?: string;
   highlightColor?: AccentColor;
 }
 
-const { href, ariaLabel, highlightColor } = Astro.props;
+const { href, onClick, ariaLabel, highlightColor } = Astro.props;
 const highlight = `var(--accent-${highlightColor});`;
 const shadowColor = highlightColor
   ? `color-mix(in srgb, var(--accent-${highlightColor}) 30%, transparent)`
   : "var(--shadow-interactive)";
 
 const currentPath = Astro.url.pathname;
-const isActive = currentPath === href;
+const isActive = href ? currentPath === href : false;
 ---
 
-<a
-  href={href}
-  class:list={["nav-button", { active: isActive }]}
-  aria-label={ariaLabel}
->
-  <span>
-    <slot />
-  </span>
-</a>
+{
+  href ? (
+    <a
+      href={href}
+      class:list={["nav-button", { active: isActive }]}
+      aria-label={ariaLabel}
+    >
+      <span>
+        <slot />
+      </span>
+    </a>
+  ) : (
+    <button class="nav-button" aria-label={ariaLabel} onclick={onClick}>
+      <span>
+        <slot />
+      </span>
+    </button>
+  )
+}
 
 <style lang="scss" define:vars={{ highlight, shadowColor }}>
   .nav-button {

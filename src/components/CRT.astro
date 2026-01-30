@@ -1,5 +1,5 @@
 ---
-import CRT from "./CRT.tsx";
+import ReactCRT from "./CRT.tsx";
 
 interface Props {
   scale?: number;
@@ -10,9 +10,9 @@ interface Props {
 const { scale = 100, slope = 0.8, intercept = 0.1 } = Astro.props;
 ---
 
-<CRT client:load scale={scale} slope={slope} intercept={intercept}>
+<ReactCRT client:load scale={scale} slope={slope} intercept={intercept}>
   <slot />
-</CRT>
+</ReactCRT>
 
 <style is:global>
   .crt-screen {

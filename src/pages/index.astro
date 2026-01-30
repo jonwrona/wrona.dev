@@ -1,18 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-import CardGrid from "../components/CardGrid.astro";
-import Card from "../components/Card.astro";
-import Button from "../components/Button.astro";
 import IconButton from "../components/IconButton.astro";
-import WindowSizeDisplay from "../components/WindowSizeDisplay.astro";
 ---
 
 <BaseLayout title="Hi, I'm Jon">
   <main>
     <div>
       <h1>Hi, I'm Jon</h1>
-      <p class="text-2xl">I like building things.</p>
+      <p class="text-2xl">I like building stuff.</p>
       <p style="font-size: 2rem">
         <IconButton
           icon="github"
@@ -43,17 +38,12 @@ import WindowSizeDisplay from "../components/WindowSizeDisplay.astro";
           href="https://www.goodreads.com/jonwrona"
           target="_blank"
           color="red"
-          label="Sometimes I read"
+          label="Peep my Goodreads"
           title="Goodreads"
         />
       </p>
     </div>
   </main>
-  <div class="text-sm" style="position: fixed; right: 1rem; bottom: 1rem;">
-    Icons from <a href="https://pixeliconlibrary.com/">Pixel Icon Library</a> by <a
-      href="https://hackernoon.com/">HackerNoon</a
-    >
-  </div>
 </BaseLayout>
 
 <style>

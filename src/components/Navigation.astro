@@ -14,7 +14,7 @@ const {} = Astro.props;
   <NavButton href="/about" highlightColor="amber">Who?</NavButton>
   <NavButton href="/blog" highlightColor="cyan">Rambles</NavButton>
   <NavButton href="/projects" highlightColor="red">Stuff</NavButton>
-  <NavButton ariaLabel="Settings">
+  <NavButton onClick={`window.settings.showModal()`} ariaLabel="Settings">
     <i class="hn hn-cog-solid"></i>
   </NavButton>
 </nav>
@@ -27,7 +27,7 @@ const {} = Astro.props;
     left: 50%;
     border-radius: 0.5rem;
     transform: translateX(-50%);
-    bottom: 1rem;
+    top: 1rem;
     height: 4rem;
     display: flex;
     gap: 0.5rem;
